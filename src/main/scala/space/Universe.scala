@@ -1,4 +1,4 @@
-package space.domainModel
+package space
 
 // class to represent the universe via its objects and current time
 class Universe(var objects: List[SpaceObject], var time: Double = 0.0) {

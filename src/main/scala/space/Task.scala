@@ -1,4 +1,4 @@
-package space.domainModel
+package space
 
 // TODO: implement this type as a trait or enum
-type Command
+type Task

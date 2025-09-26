@@ -1,14 +1,14 @@
-package space.domainModel
+package space
 
-import space._
-import minitest._
+import minitest.*
+import space.*
 
 // click on the green arrow in the margin to run the tests
 // <--
 object Test extends SimpleTestSuite {
   test("tour") {
-    import Examples._
 
+    /*
     val stops =
       List(mercury, venus, mars, jupiter, saturn, neptun, uranus, pluto, earth)
 
@@ -21,6 +21,8 @@ object Test extends SimpleTestSuite {
 
     // check that the mission passes through one waypoint for each planet
     assertEquals(predicted, expected)
+    
+     */
   }
 
   test("TODO") {

@@ -1,4 +1,4 @@
-package space.domainModel
+package space
 
 class Compiler(universe: Universe, ship: SpaceShip) {
   def compile(tasks: List[Task]): List[Command] = {

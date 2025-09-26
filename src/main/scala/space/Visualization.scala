@@ -1,12 +1,8 @@
-package space.domainModel
+package space
 
-import javax.swing._
-import java.awt.Graphics
-import java.awt.Color
-import java.awt.event.ActionListener
-import java.awt.event.ActionEvent
-import java.awt.BasicStroke
-import java.awt.Graphics2D
+import java.awt.{BasicStroke, Color, Graphics, Graphics2D}
+import java.awt.event.{ActionEvent, ActionListener}
+import javax.swing.*
 
 // two entry points into the visualization,
 // one for running a mission that gets compiled to commands
@@ -75,9 +71,7 @@ class Visualization(universe: Universe) extends JPanel with ActionListener {
 
     obj match {
       case planet: Planet =>
-        import planet.position
-        import planet.radius
-        import planet.color
+        import planet.{color, position, radius}
 
         val x = position.x - radius
         val y = position.y + radius
@@ -94,9 +88,7 @@ class Visualization(universe: Universe) extends JPanel with ActionListener {
         g.drawString(text, cx + px.toInt, cy - py.toInt)
 
       case ship: SpaceShip =>
-        import ship.position
-        import ship.orientation
-        import ship.color
+        import ship.{color, orientation, position}
 
         val size = ship.radius
 

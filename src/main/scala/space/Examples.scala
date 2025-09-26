@@ -1,4 +1,4 @@
-package space.domainModel
+package space
 
 @main // Run this to get a first result!
 def empty() =
