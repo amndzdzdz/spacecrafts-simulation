@@ -4,3 +4,5 @@ target/
 .idea/
 .bsp/
 .scala-build/
+.scala-build
+.bloop/
