@@ -1,4 +1,4 @@
-package space
+package space.domainModel
 
 import space._
 import minitest._

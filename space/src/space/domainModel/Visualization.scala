@@ -1,4 +1,4 @@
-package space
+package space.domainModel
 
 import javax.swing._
 import java.awt.Graphics

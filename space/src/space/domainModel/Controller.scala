@@ -1,4 +1,4 @@
-package space
+package space.domainModel
 
 class Controller(val ship: SpaceShip) {
   // sequence of commands to be executed,

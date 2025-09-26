@@ -1,4 +1,4 @@
-package space
+package space.domainModel
 
 import scala.util.Random
 

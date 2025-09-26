@@ -1,4 +1,4 @@
-package space
+package space.domainModel
 
 enum Event {
   case Waypoint(position: Vector)
