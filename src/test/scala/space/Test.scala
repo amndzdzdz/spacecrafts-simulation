@@ -33,7 +33,28 @@ object Test extends SimpleTestSuite {
     assertEquals(predicted, expected)
   }
 
-  test("TODO") {
-    // add more tests!
+  test("tourWithStatusMessage") {
+
+    val stops =
+      List(
+        mercury,
+        venus,
+        mars,
+        jupiter,
+        saturn,
+        neptun,
+        uranus,
+        pluto,
+        earth
+      )
+
+    val expected = for (planet <- stops) yield Event.Waypoint(planet.position)
+    val expectedWithStatusEvent = expected ::: List(Event.StatusEvent("Welcome back home"))
+
+    val mission = new Mission(solarSystem, venturer)
+    val predicted = mission.events(Examples.tourWithStatusMessage)
+
+    // check that the mission passes through one waypoint for each planet
+    assertEquals(predicted, expectedWithStatusEvent)
   }
 }
