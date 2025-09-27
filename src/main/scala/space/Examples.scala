@@ -60,7 +60,20 @@ object Examples {
      NavigateTo("Neptun"),
      NavigateTo("Uranus"),
      NavigateTo("Pluto"),
-     NavigateTo("Earth"),
+     NavigateTo("Earth")
+  )
+
+  val tourWithStatusMessage = List(
+    NavigateTo("Mercury"),
+    NavigateTo("Venus"),
+    NavigateTo("Mars"),
+    NavigateTo("Jupiter"),
+    NavigateTo("Saturn"),
+    NavigateTo("Neptun"),
+    NavigateTo("Uranus"),
+    NavigateTo("Pluto"),
+    NavigateTo("Earth"),
+    SetStatus("Welcome back home")
   )
 
   val science = List()

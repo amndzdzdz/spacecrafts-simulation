@@ -24,8 +24,8 @@ object Interpreter {
             ship.position = planetPosition
             return Event.Waypoint(planetPosition)
         }
-      //case Task.SetStatus(statusMessage) =>
-      //  ???
+      case Task.SetStatus(statusMessage) =>
+        return Event.StatusEvent(statusMessage)
     }
   }
 }

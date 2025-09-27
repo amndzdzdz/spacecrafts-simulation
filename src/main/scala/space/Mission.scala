@@ -6,6 +6,7 @@ import mtl.*
 enum Event {
   case Waypoint(position: Vector)
   case Measurement(gravity: Vector)
+  case StatusEvent(statusMessage: String)
 }
 
 class Mission(universe: Universe, ship: SpaceShip) {
