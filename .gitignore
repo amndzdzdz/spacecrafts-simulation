@@ -6,3 +6,4 @@ target/
 .scala-build/
 .scala-build
 .bloop/
+approach.txt
