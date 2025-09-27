@@ -1,5 +1,7 @@
 package space
 
+import mtl.Task.*
+
 @main // Run this to get a first result!
 def empty() =
   Visualization.runProgram(
@@ -13,7 +15,7 @@ def tour() =
   Visualization.runMission(
     Examples.venturer,
     Examples.solarSystem,
-    Examples.tour // TODO: see below!
+    Examples.tour
   )
 
 @main
@@ -49,20 +51,17 @@ object Examples {
   // TODO: once you have implemented the abstract syntax,
   //       you can uncomment the following missions and try them out via the main functions above
 
-  val tour = List()
-
-  // val tour = List(
-  //   NavigateTo("Mercury"),
-  //   NavigateTo("Venus"),
-  //   NavigateTo("Mars"),
-  //   NavigateTo("Jupiter"),
-  //   NavigateTo("Saturn"),
-  //   NavigateTo("Neptun"),
-  //   NavigateTo("Uranus"),
-  //   NavigateTo("Pluto"),
-  //   NavigateTo("Earth"),
-  //   SetStatus("Welcome back home")
-  // )
+  val tour = List(
+     NavigateTo("Mercury"),
+     NavigateTo("Venus"),
+     NavigateTo("Mars"),
+     NavigateTo("Jupiter"),
+     NavigateTo("Saturn"),
+     NavigateTo("Neptun"),
+     NavigateTo("Uranus"),
+     NavigateTo("Pluto"),
+     NavigateTo("Earth"),
+  )
 
   val science = List()
 

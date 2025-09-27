@@ -1,5 +1,7 @@
 package space
 
+import mtl.*
+
 class Compiler(universe: Universe, ship: SpaceShip) {
   def compile(tasks: List[Task]): List[Command] = {
     // TODO: compile list of tasks into list of commands,
