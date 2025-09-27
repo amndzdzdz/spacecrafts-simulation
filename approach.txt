@@ -1,0 +1,13 @@
+Task 1 (MTL):
+
+1. Define the grammar
+2. Create the abstract syntax
+3. Write the interpreter, which creates specific objects based on the AST
+4. Predict mission
+5. Write some tests
+
+
+Exam questions:
+1. What were the general steps in your approach?
+2. How did you write the interpreter
+(talk about how you got state, planet positions, updated the spaceship etc.)
