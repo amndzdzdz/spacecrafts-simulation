@@ -1,5 +1,8 @@
 package space
 
+import mtl.Interpreter.execute
+import mtl.*
+
 enum Event {
   case Waypoint(position: Vector)
   case Measurement(gravity: Vector)
@@ -7,8 +10,7 @@ enum Event {
 
 class Mission(universe: Universe, ship: SpaceShip) {
   def events(tasks: List[Task]): List[Event] = {
-    // TODO: predict the outcome of the mission as a sequence of events
-    // there is no need to use the controller or simulation here
-    ???
+    val events = for (task <- tasks) yield execute(task, ship, universe)
+    return events
   }
 }
