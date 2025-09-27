@@ -1,4 +1,6 @@
-package space
+package esl
+
+import space.{Event, SpaceShip}
 
 class Controller(val ship: SpaceShip) {
   // sequence of commands to be executed,

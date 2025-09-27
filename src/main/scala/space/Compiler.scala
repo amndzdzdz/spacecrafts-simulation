@@ -1,6 +1,7 @@
 package space
 
 import mtl.*
+import esl.*
 
 class Compiler(universe: Universe, ship: SpaceShip) {
   def compile(tasks: List[Task]): List[Command] = {

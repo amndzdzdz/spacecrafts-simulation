@@ -4,6 +4,7 @@ import java.awt.{BasicStroke, Color, Graphics, Graphics2D}
 import java.awt.event.{ActionEvent, ActionListener}
 import javax.swing.*
 import mtl.*
+import esl.*
 
 // two entry points into the visualization,
 // one for running a mission that gets compiled to commands
