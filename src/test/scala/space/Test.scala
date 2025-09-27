@@ -57,4 +57,28 @@ object Test extends SimpleTestSuite {
     // check that the mission passes through one waypoint for each planet
     assertEquals(predicted, expectedWithStatusEvent)
   }
+
+  test("tourWithMeasurement") {
+    val expected = List(
+      Event.Waypoint(mercury.position),
+      Event.Waypoint(venus.position),
+      Event.Waypoint(mars.position),
+      Event.Measurement(solarSystem.gravityAt(mars.position)),
+      Event.Waypoint(jupiter.position),
+      Event.Waypoint(saturn.position),
+      Event.Measurement(solarSystem.gravityAt(saturn.position)),
+      Event.Waypoint(neptun.position),
+      Event.Waypoint(uranus.position),
+      Event.Measurement(solarSystem.gravityAt(uranus.position)),
+      Event.Waypoint(pluto.position),
+      Event.Waypoint(earth.position),
+    )
+    val expectedWithStatusEvent = expected ::: List(Event.StatusEvent("Welcome back home"))
+
+    val mission = new Mission(solarSystem, venturer)
+    val predicted = mission.events(Examples.tourWithMeasurement)
+
+    // check that the mission passes through one waypoint for each planet
+    assertEquals(predicted, expectedWithStatusEvent)
+  }
 }
