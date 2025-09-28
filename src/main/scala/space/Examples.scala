@@ -1,6 +1,7 @@
 package space
 
 import mtl.Task.*
+import esl.*
 
 @main // Run this to get a first result!
 def empty() =
@@ -16,6 +17,14 @@ def tour() =
     Examples.venturer,
     Examples.solarSystem,
     Examples.tour
+  )
+
+@main
+def tourWithCommands() =
+  Visualization.runProgram(
+    Examples.venturer,
+    Examples.solarSystem,
+    Examples.tourWithCommands
   )
 
 @main
@@ -48,8 +57,22 @@ object Examples {
       color = 0xba68c8
     )
 
-  // TODO: once you have implemented the abstract syntax,
-  //       you can uncomment the following missions and try them out via the main functions above
+  val tourWithCommands: List[Command] = List(
+    Command.RotateTo(40.0),
+    Command.Accelerate,
+    Command.Wait(2.0),
+    Command.Decelerate,
+    Command.LogWayPoint,
+    Command.CalibrateSensor,
+    Command.Wait(3.0),
+    Command.LogMeasurement,
+    Command.RotateTo(0.0),
+    Command.Accelerate,
+    Command.Wait(2.0),
+    Command.Decelerate,
+    Command.LogWayPoint,
+    Command.Display("Done")
+    )
 
   val tour = List(
      NavigateTo("Mercury"),
