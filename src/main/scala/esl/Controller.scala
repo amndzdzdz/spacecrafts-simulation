@@ -27,15 +27,20 @@ class Controller(val ship: SpaceShip) {
         case Command.Accelerate =>
           this.ship.accelerate()
         case Command.Wait(time) =>
-          this.waitUntil = now
+          this.waitUntil = now + time
         case Command.Decelerate =>
           this.ship.decelerate()
+          this.waitUntil = now + 1.0
         case Command.LogWayPoint =>
           this.flightlog = this.flightlog :+ Event.Waypoint(this.ship.position)
+          println("Flight logs:")
+          println(this.flightlog)
         case Command.CalibrateSensor =>
           this.ship.calibrate()
         case Command.LogMeasurement =>
           this.flightlog = this.flightlog :+ Measurement(this.ship.sensor)
+          println("Flight logs:")
+          println(this.flightlog)
         case Command.Display(text) => 
           this.status = text
       }
