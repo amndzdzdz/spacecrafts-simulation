@@ -2,34 +2,61 @@ package space
 
 import mtl.*
 import esl.*
+import esl.Command.*
 
 class Compiler(universe: Universe, ship: SpaceShip) {
   def compile(tasks: List[Task]): List[Command] = {
-    // TODO: compile list of tasks into list of commands,
-    //       you may use optional helper methods including those below
-    ???
+    (for (task <- tasks) yield this.translate(task)).flatten
   }
 
-  def emitFlight(from: Vector, to: Vector): List[Command] = {
+  private def translate(task: Task): List[Command] = {
+    task match {
+      case Task.FlyTo(x, y) =>
+        val fromVector = this.ship.position
+        val toVector = new Vector(x, y)
+        this.emitFlight(fromVector, toVector)
+      case Task.MeasureGravity =>
+        this.emitMeasurement()
+      case Task.NavigateTo(planetName) =>
+        val fromVector = this.ship.position
+        val planet = this.universe.planet(planetName)
+        planet match {
+          case Some(value) =>
+            this.emitFlight(fromVector, value.position)
+        }
+      case Task.SetStatus(statusMessage) =>
+        this.emitStatus(statusMessage)
+    }
+  }
+
+  private def emitFlight(from: Vector, to: Vector): List[Command] = {
     val diff = to - from
     val angle = diff.angle
     val length = diff.length
     val time = length / ship.speed
+    this.ship.position = to
 
-    // TODO: return sequence of commands to fly between points from and to:
-    // - rotate ship into the direction of angle
-    // - accelerate the ship
-    // - wait for the calculated amount of time
-    // - decelerate the ship
-    ???
+    val commands = List(
+      RotateTo(angle),
+      Accelerate,
+      Wait(time),
+      Decelerate,
+      LogWayPoint
+    )
+    return commands
   }
 
-  def emitMeasurement(): List[Command] = {
-    // TODO: return sequence of commands to conduct a measurement
-    // - calibrate sensor
-    // - wait for some time (e.g. 4 seconds)
-    // - take measurement
-    ???
+  private def emitMeasurement(): List[Command] = {
+    val commands = List(
+      CalibrateSensor,
+      Wait(4.0),
+      LogMeasurement
+    )
+    return commands
+  }
+
+  private def emitStatus(statusMessage: String): List[Command] = {
+    List(Display(statusMessage))
   }
 
   def optimize(commands: List[Command]): List[Command] = {
