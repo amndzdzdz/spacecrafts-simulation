@@ -23,6 +23,8 @@ class Compiler(universe: Universe, ship: SpaceShip) {
         planet match {
           case Some(value) =>
             this.emitFlight(fromVector, value.position)
+          case None =>
+            return Nil
         }
       case Task.SetStatus(statusMessage) =>
         this.emitStatus(statusMessage)
@@ -60,8 +62,29 @@ class Compiler(universe: Universe, ship: SpaceShip) {
   }
 
   def optimize(commands: List[Command]): List[Command] = {
-    // TODO: optimize sequence of commands by removing unnecessary deceleration
-    //       for now implemented as a non-operation, which is safe
-    commands
+    //optimize a sequence of commands by removing unnecessary deceleration
+    commands match {
+      case Nil =>
+        Nil
+      case Command.Decelerate :: rest if accelerates(rest) =>
+        optimize(rest)
+      case first :: rest =>
+        first :: optimize(rest)
+    }
+  }
+
+  def accelerates(commands: List[Command]): Boolean = {
+    commands match {
+      case Command.Accelerate :: _ =>
+        true
+      case Command.Display(status) :: rest =>
+        accelerates(rest)
+      case Command.RotateTo(angle) :: rest =>
+        accelerates(rest)
+      case Command.LogWayPoint :: rest =>
+        accelerates(rest)
+      case _ =>
+        false
+    }
   }
 }
