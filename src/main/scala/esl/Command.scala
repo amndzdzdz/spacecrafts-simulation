@@ -2,7 +2,7 @@ package esl
 
 enum Command {
   // This part of the AST corresponds to the task FlyTo and NavigateTo of the MTL
-  case RotateTo()
+  case RotateTo(angle: Double)
   case Accelerate
   case Wait(time: Double)
   case Decelerate
