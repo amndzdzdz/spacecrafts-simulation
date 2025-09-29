@@ -115,6 +115,21 @@ object Examples {
     SetStatus("Welcome back home")
   )
 
+  val MTLvsESLTour = List(
+    NavigateTo("Mercury"),
+    NavigateTo("Venus"),
+    NavigateTo("Mars"),
+    MeasureGravity,
+    NavigateTo("Jupiter"),
+    NavigateTo("Saturn"),
+    MeasureGravity,
+    NavigateTo("Neptun"),
+    NavigateTo("Uranus"),
+    MeasureGravity,
+    NavigateTo("Pluto"),
+    NavigateTo("Earth")
+  )
+
   val science = List()
 
   // val science = List(

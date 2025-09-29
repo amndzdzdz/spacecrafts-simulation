@@ -81,4 +81,20 @@ object Test extends SimpleTestSuite {
     // check that the mission passes through one waypoint for each planet
     assertEquals(predicted, expectedWithStatusEvent)
   }
+
+  test("MTLToESLComparison") {
+    val mission = new Mission(solarSystem, venturer)
+    //predicted MTL
+    val predictedEventsMTL = mission.events(MTLvsESLTour)
+
+    Visualization.runMission(
+      venturer,
+      solarSystem,
+      MTLvsESLTour
+    )
+    val predictedEventsESL = venturer.controller.flightlog
+    
+    // check that the mission passes through one waypoint for each planet
+    assertEquals(predictedEventsMTL, predictedEventsESL)
+  }
 }
