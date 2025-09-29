@@ -27,10 +27,12 @@ class Controller(val ship: SpaceShip) {
 
         case Command.Wait(time) =>
           this.waitUntil = now + time
+          checkWaitInvariant(this.waitUntil)
 
         case Command.Decelerate =>
           this.ship.decelerate()
           this.waitUntil = now + 1.0
+          checkWaitInvariant(this.waitUntil)
 
         case Command.LogWayPoint =>
           this.flightlog = this.flightlog :+ Event.Waypoint(this.ship.position)
@@ -45,5 +47,9 @@ class Controller(val ship: SpaceShip) {
           this.status = text
       }
     }
+  }
+
+  private def checkWaitInvariant(waitUntil: Double) = {
+    require(waitUntil >= 0)
   }
 }

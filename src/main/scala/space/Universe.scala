@@ -27,8 +27,7 @@ class Universe(var objects: List[SpaceObject], var time: Double = 0.0) {
 
     for (case planet: Planet <- objects) {
       val diff = planet.position - here
-      val pull =
-        diff.norm * planet.mass
+      val pull = diff.norm * planet.mass
       val length = diff.length
 
       if (
@@ -54,6 +53,7 @@ class Planet(
     val radius: Double,
     val color: Int
 ) extends SpaceObject {
+  require(radius > 0)
   val position = Vector(x, y)
   def mass = radius * radius * radius
   def timePasses(universe: Universe, now: Double) = {}
@@ -75,6 +75,7 @@ class SpaceShip(
   var controller = Controller(this) // the ships controller
 
   def timePasses(universe: Universe, now: Double) = {
+    require(now >= universe.time)
     val dtime = now - universe.time
     position += velocity * dtime
 

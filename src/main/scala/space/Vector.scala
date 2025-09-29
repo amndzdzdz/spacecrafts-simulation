@@ -6,8 +6,10 @@ case class Vector(x: Double, y: Double) {
   def *(that: Double) =
     Vector(this.x * that, this.y * that)
 
-  def /(that: Double) =
+  def /(that: Double) = {
+    require(that != 0)
     Vector(this.x / that, this.y / that)
+  }
 
   infix def dot(that: Vector) =
     this.x * that.x + this.y * that.y
