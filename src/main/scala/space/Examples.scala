@@ -27,14 +27,6 @@ def tourWithCommands() =
     Examples.tourWithCommands
   )
 
-@main
-def science() =
-  Visualization.runMission(
-    Examples.venturer,
-    Examples.solarSystem,
-    Examples.science // TODO: see below!
-  )
-
 object Examples {
   // https://www.theplanetstoday.com/
   val sun = Planet(0, 0, "Sol", 64, 0xfff0c0)
@@ -129,25 +121,6 @@ object Examples {
     NavigateTo("Pluto"),
     NavigateTo("Earth")
   )
-
-  val science = List()
-
-  // val science = List(
-  //   FlyTo(-60, 60),
-  //   MeasureGravity,
-  //   FlyTo(-500, -400),
-  //   MeasureGravity,
-  //   FlyTo(30, 450),
-  //   MeasureGravity,
-  //   FlyTo(300, 300),
-  //   MeasureGravity,
-  //   FlyTo(560, -80),
-  //   MeasureGravity,
-  //   NavigateTo("Pluto"),
-  //   MeasureGravity,
-  //   NavigateTo("Earth"),
-  //   SetStatus("That was fun")
-  // )
 
   val solarSystem = Universe(
     List(

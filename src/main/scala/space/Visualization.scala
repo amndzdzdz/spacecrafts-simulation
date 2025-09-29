@@ -6,9 +6,6 @@ import javax.swing.*
 import mtl.*
 import esl.*
 
-// two entry points into the visualization,
-// one for running a mission that gets compiled to commands
-// and one for running commands directly
 object Visualization {
   def runMission(
       ship: SpaceShip,
@@ -41,7 +38,6 @@ object Visualization {
 
 class Visualization(universe: Universe) extends JPanel with ActionListener {
   def start() = {
-    // initialize a timer that ticks every 32 milliseconds and calls actionPerformed
     universe.time = now()
     val timer = new Timer(32, this)
     timer.start()
@@ -52,9 +48,7 @@ class Visualization(universe: Universe) extends JPanel with ActionListener {
   }
 
   def actionPerformed(e: ActionEvent): Unit = {
-    // get current time and run the usiverse
     universe.timePassesTo(now())
-    // make sure graphics are updated then
     repaint()
   }
 

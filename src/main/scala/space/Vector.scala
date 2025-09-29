@@ -2,9 +2,6 @@ package space
 
 import scala.util.Random
 
-// utility class to represent 2-dimensional vectors
-// with some useful operations
-
 case class Vector(x: Double, y: Double) {
   def *(that: Double) =
     Vector(this.x * that, this.y * that)

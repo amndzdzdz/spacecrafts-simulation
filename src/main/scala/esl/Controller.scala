@@ -5,11 +5,8 @@ import space.{Event, SpaceShip}
 
 class Controller(val ship: SpaceShip) {
   var commands: List[Command] = Nil
-
   var flightlog: List[Event] = Nil
-
   var waitUntil: Double = 0.0
-
   var status: String = "idle"
 
   def program(commands: List[Command]) = {
@@ -24,23 +21,26 @@ class Controller(val ship: SpaceShip) {
       command match {
         case Command.RotateTo(angle) =>
           this.ship.rotateTo(angle)
+
         case Command.Accelerate =>
           this.ship.accelerate()
+
         case Command.Wait(time) =>
           this.waitUntil = now + time
+
         case Command.Decelerate =>
           this.ship.decelerate()
           this.waitUntil = now + 1.0
+
         case Command.LogWayPoint =>
           this.flightlog = this.flightlog :+ Event.Waypoint(this.ship.position)
-          println("Flight logs:")
-          println(this.flightlog)
+
         case Command.CalibrateSensor =>
           this.ship.calibrate()
+
         case Command.LogMeasurement =>
           this.flightlog = this.flightlog :+ Measurement(this.ship.sensor)
-          println("Flight logs:")
-          println(this.flightlog)
+
         case Command.Display(text) => 
           this.status = text
       }

@@ -2,28 +2,24 @@ package mtl
 
 import space.*
 
-import scala.collection.immutable
-
 object Interpreter {
-  // Return an event
   def execute(task: Task, ship: SpaceShip, universe: Universe): Event = {
     task match {
       case Task.FlyTo(x, y) =>
-        val positionVector = new Vector(x, y)
-        ship.position = positionVector
-        return Event.Waypoint(positionVector)
+        return Event.Waypoint(new Vector(x, y))
+
       case Task.MeasureGravity =>
-        val currentPosition = ship.position
-        val gravityAtPosition = universe.gravityAt(currentPosition)
+        val gravityAtPosition = universe.gravityAt(ship.position)
         return Event.Measurement(gravityAtPosition)
+
       case Task.NavigateTo(planetName) =>
         val planet = universe.planet(planetName)
         planet match {
-          case Some(value) =>
-            var planetPosition = value.position
-            ship.position = planetPosition
-            return Event.Waypoint(planetPosition)
+          case Some(planet) =>
+            ship.position = planet.position
+            return Event.Waypoint(planet.position)
         }
+
       case Task.SetStatus(statusMessage) =>
         return Event.StatusEvent(statusMessage)
     }
