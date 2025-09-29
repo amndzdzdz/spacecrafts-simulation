@@ -80,7 +80,7 @@ class Visualization(universe: Universe) extends JPanel with ActionListener {
         val px = position.x + planet.radius
         val py = position.y - planet.radius
 
-        val text = planet.name + " (mass: " + planet.mass.toInt + ")"
+        val text = planet.name.toString + " (mass: " + planet.mass.toInt + ")"
         g.drawString(text, cx + px.toInt, cy - py.toInt)
 
       case ship: SpaceShip =>

@@ -1,10 +1,11 @@
 package space
 
 import esl.Controller
+import mtl.PlanetName
 
 class Universe(var objects: List[SpaceObject], var time: Double = 0.0) {
 
-  def planet(name: String): Option[Planet] = {
+  def planet(name: PlanetName): Option[Planet] = {
     objects.collectFirst {
       case planet: Planet if planet.name == name =>
         planet
@@ -49,7 +50,7 @@ trait SpaceObject {
 class Planet(
     x: Double,
     y: Double,
-    val name: String,
+    val name: PlanetName,
     val radius: Double,
     val color: Int
 ) extends SpaceObject {
